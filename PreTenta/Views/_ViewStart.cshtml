@@ -1,3 +1,14 @@
-﻿@{
-    Layout = "_Layout";
+﻿@inject PreTenta.Interfaces.iTimeProvider myTimeProvider
+@{
+    var yyyymmdd = myTimeProvider.Now.Year * 10000 +
+        myTimeProvider.Now.Month * 100 +
+        myTimeProvider.Now.Day;
+    if (yyyymmdd >= 20180201)
+    {
+        Layout = "_Layout20180201";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
 }

@@ -12,8 +12,10 @@ namespace PreTenta.Models
         [StringLength(60, MinimumLength = 3)]
         [Required]
         public string Name { get; set; }
-        [Range(1, 1000000)]        
+        [Range(1, 1000000)]
+        [DataType(DataType.Currency)]
         public decimal UnitPrice { get; set; }
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy.MM.dd}")]
         public DateTime ReleaseDate { get; set; }
         public Boolean IsDeleted { get; set; }

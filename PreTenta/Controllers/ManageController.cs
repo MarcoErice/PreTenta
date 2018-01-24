@@ -61,7 +61,8 @@ namespace PreTenta.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = StatusMessage
+                StatusMessage = StatusMessage,
+                CultureCode = user.CultureCode
             };
 
             return View(model);
@@ -101,6 +102,8 @@ namespace PreTenta.Controllers
                     throw new ApplicationException($"Unexpected error occurred setting phone number for user with ID '{user.Id}'.");
                 }
             }
+            user.CultureCode = model.CultureCode;
+            await _userManager.UpdateAsync(user);
 
             StatusMessage = "Your profile has been updated";
             return RedirectToAction(nameof(Index));

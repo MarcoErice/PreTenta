@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using PreTenta.Data;
 using PreTenta.Models;
 using PreTenta.Services;
+using PreTenta.Interfaces;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace PreTenta
 {
@@ -36,7 +38,11 @@ namespace PreTenta
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
-            services.AddMvc();
+            iTimeProvider myFakeTimeProvider = new FakeTimeProvider();
+            myFakeTimeProvider.Now = DateTime.Now;
+            services.AddSingleton<iTimeProvider>(myFakeTimeProvider);
+
+            services.AddMvc();              
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

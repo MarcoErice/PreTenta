@@ -9,7 +9,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="https://fonts.googleapis.com/css?family=Supermercado+One" rel="stylesheet" />
-        <link rel="stylesheet" href="~/css/site.css" />        
+        <link rel="stylesheet" href="~/css/site201802.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -40,10 +40,10 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="AddOneMonth">Add one month</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="SubtractOneMonth">Subtract one month</a></li>
                     @if (User.IsInRole("Admin"))
-                    {
-                        <li><a>Admin</a></li>
+    {
+                <li><a>Admin</a></li>
 
-                    }
+}
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

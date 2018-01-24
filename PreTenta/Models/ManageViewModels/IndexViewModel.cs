@@ -21,5 +21,6 @@ namespace PreTenta.Models.ManageViewModels
         public string PhoneNumber { get; set; }
 
         public string StatusMessage { get; set; }
+        public string CultureCode { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PreTenta.Data;
 using PreTenta.Models;
 
@@ -14,10 +15,12 @@ namespace PreTenta.Controllers
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<ProductsController> _logger;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, ILogger<ProductsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: Products
@@ -60,7 +63,8 @@ namespace PreTenta.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(product);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();                
+                _logger.LogWarning("A new product has been added: " + product.Name);
                 return RedirectToAction(nameof(Index));
             }
             return View(product);
