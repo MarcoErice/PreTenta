@@ -120,7 +120,19 @@
   <data name="About" xml:space="preserve">
     <value>Om</value>
   </data>
+  <data name="Add_one_month" xml:space="preserve">
+    <value>Lägg till en månad</value>
+  </data>
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Hem</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>Produkter</value>
+  </data>
+  <data name="Subtract_one_month" xml:space="preserve">
+    <value>Dra bort en månad</value>
   </data>
 </root>

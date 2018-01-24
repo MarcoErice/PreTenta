@@ -34,13 +34,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">@localizer["Home"]</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">@localizer["About"]</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">@localizer["Contact"]</a></li>
-                    <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
+                    <li><a asp-area="" asp-controller="Products" asp-action="Index">@localizer["Products"]</a></li>
                     <li><a asp-area="" asp-controller="" asp-action="">@myTimeProvider.Now.ToShortDateString()</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="AddOneMonth">Add one month</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="SubtractOneMonth">Subtract one month</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="AddOneMonth">@localizer["Add_one_month"]</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="SubtractOneMonth">@localizer["Subtract_one_month"]</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="ToSwedish">Svenska</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="ToEnglish">English</a></li>
                     <li><a asp-area="" asp-controller="" asp-action="">@CultureInfo.CurrentUICulture.ToString()</a></li>
