@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.IsDeleted)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ProductId" asp-route-slug="@PreTenta.Utils.Slug.Slugify(item.Name)">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId" asp-route-slug="@PreTenta.Utils.Slug.Slugify(item.Name)">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId" asp-route-slug="@PreTenta.Utils.Slug.Slugify(item.Name)">Delete</a>
             </td>
         </tr>
 }

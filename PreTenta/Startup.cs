@@ -63,7 +63,7 @@ namespace PreTenta
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}/{slug?}");
             });
             DbSeeder.Seed(context, userManager, roleManager);
         }

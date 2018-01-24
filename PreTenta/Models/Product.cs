@@ -14,6 +14,7 @@ namespace PreTenta.Models
         public string Name { get; set; }
         [Range(1, 1000000)]        
         public decimal UnitPrice { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy.MM.dd}")]
         public DateTime ReleaseDate { get; set; }
         public Boolean IsDeleted { get; set; }
     }

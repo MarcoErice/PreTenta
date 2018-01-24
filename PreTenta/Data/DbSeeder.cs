@@ -38,21 +38,21 @@ namespace PreTenta.Data
             {
                 Name = "Surface Pro 4",
                 UnitPrice = 17499,
-                ReleaseDate = new DateTime (2016-02-17),
+                ReleaseDate = new DateTime (2016,02,17),
                 IsDeleted = true
             };
             var bProduct = new Product
             {
                 Name = "Surface book 2",
                 UnitPrice = 38499,
-                ReleaseDate = new DateTime(2018 - 02 - 19),
+                ReleaseDate = new DateTime(2018,02,19),
                 IsDeleted = true
             };
             var cProduct = new Product
             {
                 Name = "Surface laptop",
                 UnitPrice = 19499,
-                ReleaseDate = new DateTime(2017 - 02 - 15),
+                ReleaseDate = new DateTime(2017,02,15),
                 IsDeleted = true
             };
             context.Product.AddRange(aProduct);
