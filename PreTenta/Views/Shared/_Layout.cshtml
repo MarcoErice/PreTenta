@@ -1,4 +1,6 @@
-﻿@inject PreTenta.Interfaces.iTimeProvider myTimeProvider
+﻿@using System.Globalization
+@inject PreTenta.Interfaces.iTimeProvider myTimeProvider
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +11,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="https://fonts.googleapis.com/css?family=Supermercado+One" rel="stylesheet" />
-        <link rel="stylesheet" href="~/css/site.css" />        
+        <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -33,17 +35,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">@localizer["About"]</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">@localizer["Contact"]</a></li>
                     <li><a asp-area="" asp-controller="Products" asp-action="Index">Products</a></li>
                     <li><a asp-area="" asp-controller="" asp-action="">@myTimeProvider.Now.ToShortDateString()</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="AddOneMonth">Add one month</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="SubtractOneMonth">Subtract one month</a></li>
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li><a>Admin</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="ToSwedish">Svenska</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="ToEnglish">English</a></li>
+                    <li><a asp-area="" asp-controller="" asp-action="">@CultureInfo.CurrentUICulture.ToString()</a></li>
+                @if (User.IsInRole("Admin"))
+{
+                <li><a>Admin</a></li>
 
-                    }
+}
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

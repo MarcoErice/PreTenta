@@ -13,6 +13,8 @@ using PreTenta.Models;
 using PreTenta.Services;
 using PreTenta.Interfaces;
 using Microsoft.AspNetCore.Mvc.Razor;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace PreTenta
 {
@@ -42,7 +44,10 @@ namespace PreTenta
             myFakeTimeProvider.Now = DateTime.Now;
             services.AddSingleton<iTimeProvider>(myFakeTimeProvider);
 
-            services.AddMvc();              
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix,
+                opts => { opts.ResourcesPath = "Resources"; });
+            services.AddLocalization();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +55,27 @@ namespace PreTenta
             ApplicationDbContext context, UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
+
+            var supportedCultures = new[]
+           {
+                new CultureInfo("en-US"),
+                new CultureInfo("sv-SE")
+            };
+
+            var options = new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            };
+
+            options.RequestCultureProviders = new[]
+            {
+                new CookieRequestCultureProvider() { Options = options }
+            };
+
+            app.UseRequestLocalization(options);
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

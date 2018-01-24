@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using PreTenta.Interfaces;
@@ -54,6 +55,24 @@ namespace PreTenta.Controllers
             timeProvider.Now = timeProvider.Now.AddMonths(-1);
             ViewBag.Time = timeProvider.Now.ToString();
             return View("Index");
+        }
+        public IActionResult ToSwedish()
+        {
+            var code = "sv-SE";
+            var key = CookieRequestCultureProvider.DefaultCookieName;
+            var value = CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(code));
+            Response.Cookies.Append(key, value);
+            return RedirectToAction("Index");
+        }
+        public IActionResult ToEnglish()
+        {
+            var code = "en-US";
+            var key = CookieRequestCultureProvider.DefaultCookieName;
+            var value = CookieRequestCultureProvider.MakeCookieValue(
+                new RequestCulture(code));
+            Response.Cookies.Append(key, value);
+            return RedirectToAction("Index");
         }
     }
 }
