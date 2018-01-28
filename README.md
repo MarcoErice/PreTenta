@@ -1,5 +1,5 @@
 # PreTenta
-MVC course Pre exam
+MVC course Pre exam.
 Create a new ASP.NET Core MVC application with authentication enabled (Individual accounts) and make sure that the following tasks are implemented:
 
 - Switch to InMemoryDatabase
